@@ -27,6 +27,7 @@ def get_comments(post_id, submission):
         comment = comment_queue.pop(0)
         comment_dict[comment.fullname] = dict()
         comment_dict[comment.fullname]['body'] = comment.body
+        comment_dict[comment.fullname]['timestamp'] = comment.created
         comment_dict[comment.fullname]['replies'] = list()
         
         # queue current comment's replies
@@ -36,10 +37,7 @@ def get_comments(post_id, submission):
             
     return comment_dict
     
-def write_comments_JSON(post_id, save_dir='./'):
-    if not os.path.exists(save_dir):
-        os.mkdir(save_dir)
-    
+def get_comments_JSON(post_id):
     submission = reddit.submission(id=post_id)
     comment_dict = get_comments(post_id, submission)
     
@@ -50,15 +48,7 @@ def write_comments_JSON(post_id, save_dir='./'):
     submission_dict['author'] = submission.author.name
     submission_dict['timestamp'] = submission.created
     
-    submission_dict = json.dumps(submission_dict)
-    submission_json = json.loads(submission_dict)
-    with open(save_dir+'post.json', 'a') as outfile: # write the output file
-        json.dump(submission_json, outfile, indent=4)
-    
-    comment_dict = json.dumps(comment_dict)
-    comment_json = json.loads(comment_dict)
-    with open(save_dir + 'comment.json', 'a') as outfile:
-        json.dump(comment_json, outfile, indent=4)
+    return submission_dict, comment_dict
         
 def extract_comment_id(url):
     tokens = url.split("/")
