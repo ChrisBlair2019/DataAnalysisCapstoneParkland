@@ -53,3 +53,29 @@ def get_comments_JSON(post_id):
 def extract_comment_id(url):
     tokens = url.split("/")
     return tokens[6]
+
+def clean_text(text):
+    # lower case
+    text = text.lower()
+    
+    # remove numbers
+    text = re.sub(r'\d+', '', text)
+    
+    # remove punctuations
+    text = re.sub(r'[^\w\s]','',text)
+    
+    # remove '\n', '\t'
+    text = text.replace('\n', '')
+    text = text.replace('\t', '')
+    
+    text = ' '.join(text.split())
+    
+    # remove stop words
+    stop_words = set(stopwords.words('english'))
+    tokens = word_tokenize(text)
+    tokens = [i for i in tokens if i not in stop_words]
+    
+    # lemmatize tokens
+    tokens = [lemmatizer.lemmatize(i) for i in tokens]
+    
+    return text, tokens
