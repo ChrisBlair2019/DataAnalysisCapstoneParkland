@@ -91,6 +91,21 @@ def clean_text(text):
 
 import operator
 import collections
+
+def sort_dict(dictionary, by_value=False, reverse=False):
+    """
+    Sorts the input dictionary
+
+    Args:
+        dictionary (dict): input dictionary to be sorted
+        by_value (bool): sort by value defaults to False
+        reverse (bool): reverse sort defaults to False
+    """
+    index = 1 if by_value else 0
+    sorted_list = sorted(dictionary.items(), key=lambda kv: kv[index], reverse=reverse)
+    sorted_dict = collections.OrderedDict(sorted_list)
+    return sorted_dict
+
 def term_frequency(tokens):
     """
     Calculates term frequencies of the given tokens
@@ -109,6 +124,4 @@ def term_frequency(tokens):
         else:
             freq_dict[token] += 1
 
-    sorted_list = sorted(freq_dict.items(), key=lambda kv: kv[1], reverse=True)
-    sorted_dict = collections.OrderedDict(sorted_list)
-    return sorted_dict
+    return sort_dict(freq_dict, by_value=True, reverse=True)
