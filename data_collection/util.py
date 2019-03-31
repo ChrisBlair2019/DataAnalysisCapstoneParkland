@@ -75,32 +75,32 @@ def clean_text(text, stop=False, lemmatize=False, stem=False):
     """
     # lower case
     text = text.lower()
-    
+
     # remove numbers
     text = re.sub(r'\d+', '', text)
-    
+
     # remove punctuations
     text = re.sub(r'[^\w\s]','',text)
-    
+
     # remove '\n', '\t'
     text = text.replace('\n', '')
     text = text.replace('\t', '')
     text = ' '.join(text.split())
-    
+
     # remove stop words
     if stop:
         stop_words = set(stopwords.words('english'))
         tokens = word_tokenize(text)
         tokens = [i for i in tokens if i not in stop_words]
-    
+
     # lemmatize tokens
     if lemmatize:
         tokens = [lemmatizer.lemmatize(i) for i in tokens]
-        
+
     # stemming tokens
     if stem:
         tokens = [stemmer.stem(i) for i in tokens]
-    
+
     return text, tokens
 
 import operator
@@ -114,6 +114,9 @@ def sort_dict(dictionary, by_value=False, reverse=False):
         dictionary (dict): input dictionary to be sorted
         by_value (bool): sort by value defaults to False
         reverse (bool): reverse sort defaults to False
+
+    Returns:
+        sorted_dict(dict): sorted dictionary with the input dict
     """
     index = 1 if by_value else 0
     sorted_list = sorted(dictionary.items(), key=lambda kv: kv[index], reverse=reverse)
@@ -142,6 +145,15 @@ def term_frequency(tokens):
 
 import math
 def pmi(text, a, b, text_len=0):
+    """
+    Calculates the Pointwise Mutual Information of two words
+
+    Args:
+        text(str): input text body
+        a(str): word 1
+        b(str): word 2
+        text_len = number of words in text, defaults to 0
+    """
     if len(text) != 0 and text_len == 0:
         text_len = len(text.split(' '))
     ab = a + ' ' + b
@@ -155,3 +167,29 @@ def pmi(text, a, b, text_len=0):
     p_b = b_count / text_len
     ratio = p_ab / (p_a * p_b)
     return math.log(ratio, 2), p_ab, p_a, p_b
+
+def mutual_info(text):
+    """
+    Calculates the mutual information of the input text body
+
+    Args:
+        text(str): input text body
+
+    Returns:
+        mutual_info (float): mutual information of the input text body
+        pmi_dict (dict): keys = word pairs, value = pmi of the key
+    """
+    word_list = text.split(' ')
+    len_list = len(word_list)
+    pmi_dict = dict()
+    mutual_info = 0
+    for i in range(0, len(word_list)-1):
+        word1 = word_list[i]
+        word2 = word_list[i+1]
+        curr_pmi, p_ab, p_a, p_b = pmi(text, word1, word2, len_list)
+        word_pair = word1 + ' ' + word2
+        if word_pair not in pmi_dict:
+            pmi_dict[word_pair] = curr_pmi
+            mutual_info += curr_pmi * p_ab
+    pmi_dict = sort_dict(pmi_dict, by_value=True, reverse=True)
+    return mutual_info, pmi_dict
