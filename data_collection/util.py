@@ -54,7 +54,16 @@ def extract_comment_id(url):
     tokens = url.split("/")
     return tokens[6]
 
-def clean_text(text):
+import string
+import re
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
+stemmer = PorterStemmer()
+lemmatizer = WordNetLemmatizer()
+
+def clean_text(text, stop=False, lemmatize=False, stem=False):
     """
     Cleans the input text.
     Args:
@@ -66,27 +75,32 @@ def clean_text(text):
     """
     # lower case
     text = text.lower()
-
+    
     # remove numbers
     text = re.sub(r'\d+', '', text)
-
+    
     # remove punctuations
     text = re.sub(r'[^\w\s]','',text)
-
+    
     # remove '\n', '\t'
     text = text.replace('\n', '')
     text = text.replace('\t', '')
-
     text = ' '.join(text.split())
-
+    
     # remove stop words
-    stop_words = set(stopwords.words('english'))
-    tokens = word_tokenize(text)
-    tokens = [i for i in tokens if i not in stop_words]
-
+    if stop:
+        stop_words = set(stopwords.words('english'))
+        tokens = word_tokenize(text)
+        tokens = [i for i in tokens if i not in stop_words]
+    
     # lemmatize tokens
-    tokens = [lemmatizer.lemmatize(i) for i in tokens]
-
+    if lemmatize:
+        tokens = [lemmatizer.lemmatize(i) for i in tokens]
+        
+    # stemming tokens
+    if stem:
+        tokens = [stemmer.stem(i) for i in tokens]
+    
     return text, tokens
 
 import operator
@@ -125,3 +139,19 @@ def term_frequency(tokens):
             freq_dict[token] += 1
 
     return sort_dict(freq_dict, by_value=True, reverse=True)
+
+import math
+def pmi(text, a, b, text_len=0):
+    if len(text) != 0 and text_len == 0:
+        text_len = len(text.split(' '))
+    ab = a + ' ' + b
+    ab_count = text.count(ab)
+    if ab_count == 0:
+        return 0
+    a_count = text.count(a)
+    b_count = text.count(b)
+    p_ab = ab_count / (text_len-1)
+    p_a = a_count / text_len
+    p_b = b_count / text_len
+    ratio = p_ab / (p_a * p_b)
+    return math.log(ratio, 2), p_ab, p_a, p_b
