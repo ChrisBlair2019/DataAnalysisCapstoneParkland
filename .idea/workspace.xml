@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d7516bb-d94d-4e9b-93b2-aada37426d7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Practicum-DataAug.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Requerimiento-Rajoy-Generalitat-11oct2017.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/news_on_catalonia_oct_11_2017_original.xlsx" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sentiment_PoliticalBias_TimeAnalysis.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/dictionary.gensim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/model8_0.gensim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/model8_0.gensim.expElogbeta.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/model8_0.gensim.id2word" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ldamodels/model8_0.gensim.state" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/topic_modelling/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/topic_modelling/data_analytics.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/topic_modelling/data_process.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Practicum2-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Practicum2-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Sentiment Analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Sentiment Analysis-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practicum2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Practicum2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sentiment Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sentiment Analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reddit_headlines_labels.csv" beforeDir="false" afterPath="$PROJECT_DIR$/reddit_headlines_labels.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp-plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/temp-plot.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +29,16 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Practicum-DataAug.ipynb">
+        <entry file="file://$PROJECT_DIR$/CB_Psych_profile_2.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CB_Psych_profile.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
               <selected id="0" />
@@ -53,6 +76,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -64,7 +88,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -108,7 +131,7 @@
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28389263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
