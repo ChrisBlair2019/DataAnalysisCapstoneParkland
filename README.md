@@ -5,6 +5,7 @@ We collected 50,500 comments and replies from 19 Reddit posts from various subre
 
 Sentiment Analysis - Allows user to find sentiment of either a particluar post or of the subreddit as a whole. Further instructions within Jupyter notebook.
 
+Team members: Chris Blair, Bright Zheng, Numan Khan, Sourav Panth
 
 Chris: CB_Psych_profile
 
