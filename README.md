@@ -7,7 +7,7 @@ Sentiment Analysis - Allows user to find sentiment of either a particluar post o
 
 Team members: Chris Blair, Bright Zheng, Numan Khan, Sourav Panth
 
-Chris: CB_Psych_profile
+Chris: CB_Psych_profile, CB_Psych_Profile_2
 
 Bright: ./data, ./data_collection, ./ldamodels, ./topic_modelling
 
