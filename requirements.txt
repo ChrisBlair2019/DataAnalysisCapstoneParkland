@@ -28,7 +28,7 @@ future==0.16.0
 gcloud==0.18.3
 gensim==3.7.2
 googleapis-common-protos==1.5.9
-httplib2==0.12.1
+httplib2==0.18.0
 idna==2.7
 IndicoIo==1.2.0
 ipykernel==5.1.0
