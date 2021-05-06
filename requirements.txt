@@ -23,7 +23,7 @@ docutils==0.14
 empath==0.89
 entrypoints==0.3
 Flask==1.0.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 future==0.16.0
 gcloud==0.18.3
 gensim==3.7.2
